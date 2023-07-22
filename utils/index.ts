@@ -7,6 +7,8 @@
 // 	}
 // };
 
+import { CarProps } from "@/types";
+
 // try {
 // 	const response = await fetch(url, options);
 // 	const result = await response.text();
@@ -14,14 +16,19 @@
 // } catch (error) {
 // 	console.error(error);
 // }
-export async function fetchCars()
-{
+import { FilterProps } from "@/types";
+export async function fetchCars(filters: FilterProps)
+{   const { manufacturer, year, model, limit, fuel } = filters;
     const headers={
         'X-RapidAPI-Key': 'f89502134bmshd0d4c4e611c1638p18819bjsn3a8d8068e262',
         'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
       };
 
-      const response=await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla',{headers:headers
+      const response=await fetch(`https://
+      cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=
+      ${manufacturer}&year=${year}&model=${model}&limit=
+      ${limit}&fuel_type=${fuel}`
+      ,{headers:headers
     });
     const result=await response.json();
       //it is a get request
@@ -43,4 +50,23 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   
     return rentalRatePerDay.toFixed(0);
   };
+
+export const generateCarImageUrl  = (car: CarProps, angle?: string) =>{
+  const url = new URL("../public/hero.png");
+  const {make, year, model} = car
+  url.searchParams.append('customer', 'hrjavascriptmastery');
+  url.searchParams.append('make', make);
+  url.searchParams.append('modelFamily', model.split(" ")[0]);
+  url.searchParams.append('zoomType', 'fullscreen');
+  url.searchParams.append('modelYear', `${year}`);
+  // url.searchParams.append('zoomLevel', zoomLevel);
+  url.searchParams.append('angle', `${angle}`);
+
+  return `${url}`;
+}
+
+
+
+
+
   

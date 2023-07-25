@@ -39,3 +39,8 @@ export interface CarProps {
     limit?: number;
     fuel?: string;
   }
+
+  export interface ShowMoreProps {
+    pageNumber: number;
+    isNext: boolean;
+  }

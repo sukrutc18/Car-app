@@ -8,8 +8,8 @@ const CustomButton = ({title,
     <button
     disabled={ false }
     type={btnType || "button"}
-    className={"bg primary-blue text-white rounded-full mt-10"
-    }
+    // className={"bg primary-blue text-white rounded-full mt-10"
+    // }
     onClick={handleClick}>
       <span className= {`flex-1 ${textStyles}`}>
         {title}

@@ -19,7 +19,7 @@ const handleNavigation = () => {
             <CustomButton 
             title="Show More"
             btnType="button"
-            containerStyles="bg-primary-blue rounded-full text-white"
+           containerStyles="bg-primary-blue rounded-full text-white"
           handleClick={handleNavigation}
           />
 
